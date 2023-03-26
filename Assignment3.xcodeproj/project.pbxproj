@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		76C87F0E29D0EC84002391D5 /* IpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C87F0D29D0EC84002391D5 /* IpModel.swift */; };
+		76C87F1029D10BDA002391D5 /* IpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C87F0F29D10BDA002391D5 /* IpViewModel.swift */; };
+		76C87F1229D10BFC002391D5 /* IpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C87F1129D10BFC002391D5 /* IpView.swift */; };
+		76C87F1429D10C15002391D5 /* DretailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C87F1329D10C15002391D5 /* DretailsView.swift */; };
 		ACF5E04029BE957F00DD981A /* Assignment3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5E03F29BE957F00DD981A /* Assignment3App.swift */; };
 		ACF5E04229BE957F00DD981A /* WhatsMyIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5E04129BE957F00DD981A /* WhatsMyIP.swift */; };
 		ACF5E04429BE958000DD981A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACF5E04329BE958000DD981A /* Assets.xcassets */; };
@@ -16,6 +19,9 @@
 
 /* Begin PBXFileReference section */
 		76C87F0D29D0EC84002391D5 /* IpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpModel.swift; sourceTree = "<group>"; };
+		76C87F0F29D10BDA002391D5 /* IpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpViewModel.swift; sourceTree = "<group>"; };
+		76C87F1129D10BFC002391D5 /* IpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpView.swift; sourceTree = "<group>"; };
+		76C87F1329D10C15002391D5 /* DretailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DretailsView.swift; sourceTree = "<group>"; };
 		ACF5E03C29BE957F00DD981A /* Assignment3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF5E03F29BE957F00DD981A /* Assignment3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment3App.swift; sourceTree = "<group>"; };
 		ACF5E04129BE957F00DD981A /* WhatsMyIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsMyIP.swift; sourceTree = "<group>"; };
@@ -45,6 +51,8 @@
 		76C87F0B29D0D75B002391D5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				76C87F1129D10BFC002391D5 /* IpView.swift */,
+				76C87F1329D10C15002391D5 /* DretailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -52,6 +60,7 @@
 		76C87F0C29D0D79D002391D5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				76C87F0F29D10BDA002391D5 /* IpViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -164,8 +173,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76C87F1229D10BFC002391D5 /* IpView.swift in Sources */,
 				ACF5E04229BE957F00DD981A /* WhatsMyIP.swift in Sources */,
+				76C87F1029D10BDA002391D5 /* IpViewModel.swift in Sources */,
 				ACF5E04029BE957F00DD981A /* Assignment3App.swift in Sources */,
+				76C87F1429D10C15002391D5 /* DretailsView.swift in Sources */,
 				76C87F0E29D0EC84002391D5 /* IpModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
