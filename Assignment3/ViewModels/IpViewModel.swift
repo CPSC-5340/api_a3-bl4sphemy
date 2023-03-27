@@ -14,27 +14,66 @@ class IpViewModel : ObservableObject {
     @Published var error : IpModelError?
     private let url = "https://ipinfo.io/json?token=1004daec758201"
     
-    @MainActor
-    func fetchData() async {
-        if let url = URL(string: url) {
-            do {
-                let (data, _) = try await URLSession.shared.data(from: url)
-                guard let results = try JSONDecoder().decode(IpResults?.self, from: data) else {
-                    self.hasError.toggle()
-                    self.error = IpModelError.decodeError
-                    return
-                }
-                self.IpData = results.data
-            } catch {
-                self.hasError.toggle()
-                self.error = IpModelError.customError(error: error)
+        func fetchData() {
+            if let url = URL(string: self.url) {
+    
+                URLSession
+                    .shared
+                    .dataTask(with: url) { (data, response, error) in
+                        if let error = error {
+                            print(error)
+                        } else {
+                            if let data = data {
+                                do {
+                                    let results = try JSONDecoder().decode(IpResults.self, from: data)
+                                    DispatchQueue.main.async {
+                                        self.IpData = results.data
+                                    }
+    
+                                } catch {
+                                    print(error)
+                                }
+                            }
+                        }
+                    }.resume()
+            }
+    
+        }
+    
+    
+    
+    
+    //@MainActor
+    //func fetchData() async {
+    //    if let url = URL(string: url) {
+    //        do {
+    //            let (data, _) = try await URLSession.shared.data(from: url)
+    //            guard let results = try JSONDecoder().decode(IpResults?.self, from: data) else {
+    //                self.hasError.toggle()
+    //                self.error = IpModelError.decodeError
+    //                return
+    //            }
+    //            self.IpData = results.data
+    //        } catch {
+    //            self.hasError.toggle()
+    //            self.error = IpModelError.customError(error: error)
+    //        }
+        //}
+    //}
+    
+    
+    func findIndex(ips: IpModel) -> Int? {
+        for index in 0..<IpData.count {
+            if ips.id == IpData[index].id {
+                return index
             }
         }
+        return nil
     }
     
-    //func getData -> IpModel() {
-    //    return self.IpData
-    //}
+    func getData() -> [IpModel] {
+        return self.IpData
+    }
     
 }
 

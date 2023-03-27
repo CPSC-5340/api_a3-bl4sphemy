@@ -14,18 +14,22 @@ struct IpView: View {
     var body: some View {
         NavigationStack {
             List {
-                //let _ = print(ipvm)
+                Text("Testing1")
+                //Text(ipvm.getData())
                 ForEach(ipvm.IpData) { ipinfo in
                     NavigationLink {
+                        Text("Testing")
+                        Text(ipinfo.ip)
                         IpDetail(ipinfo: ipinfo)
                     } label: {
-                        Text(ipinfo.hostname)
+                        Text(ipinfo.ip)
                     }
                 }
                 
             }
             .task {
-                await ipvm.fetchData()
+                ipvm.fetchData()
+                //await ipvm.fetchData()
             }
             .listStyle(.grouped)
             .navigationTitle("IP")
@@ -33,6 +37,8 @@ struct IpView: View {
                 Text("")
             }
         }
+    //
+        
     }
 }
 
