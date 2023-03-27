@@ -7,9 +7,15 @@
 
 import Foundation
 
+struct IpResults : Codable {
+        let total : String
+        let limit : String
+        let start : String
+        let data : [IpModel]
+}
 
 struct IpModel : Codable, Identifiable {
-    let id : String
+    let id: Int
     let ip: String
     let hostname: String
     let city: String

@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct WhatsMyIP: View {
+    
+    @State var nav = false
+    
     var body: some View {
         NavigationView {
-                Button(action: {
-                    print("Say What")
+            NavigationStack {
+                NavigationLink("What's My IP?", destination: IpView(), isActive: $nav)
+                
+                Button(action: { self.nav.toggle()
                 }) {
                     HStack {
                         Text("Get IP Info")
@@ -23,12 +28,12 @@ struct WhatsMyIP: View {
                     .background(Color.blue)
                     .cornerRadius(40)
                 }
+            }
+        }
           .navigationTitle("What's My IP")
           .navigationBarTitleDisplayMode(.inline)
         }
- 
-        .padding()
-    }
+        //.padding()
 }
 
 struct WhatsMyIP_Previews: PreviewProvider {

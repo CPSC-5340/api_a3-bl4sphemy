@@ -8,8 +8,31 @@
 import SwiftUI
 
 struct IpView: View {
+        
+        @ObservedObject var ipvm = IpViewModel()
+        
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List {
+                //let _ = print(ipvm)
+                ForEach(ipvm.IpData) { ipinfo in
+                    NavigationLink {
+                        IpDetail(ipinfo: ipinfo)
+                    } label: {
+                        Text(ipinfo.hostname)
+                    }
+                }
+                
+            }
+            .task {
+                await ipvm.fetchData()
+            }
+            .listStyle(.grouped)
+            .navigationTitle("IP")
+            .alert(isPresented: $ipvm.hasError, error: ipvm.error) {
+                Text("")
+            }
+        }
     }
 }
 
