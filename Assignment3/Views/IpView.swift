@@ -14,11 +14,11 @@ struct IpView: View {
     var body: some View {
         NavigationStack {
             List {
-                
+ 
                 ForEach(ipvm.IpData) { ipinfo in
                     NavigationLink {
                         Text("argh")
-                        Text(ipvm.IpData[1].ip)
+                        Text(ipvm.IpData[0].ip)
                         IpDetail(ipinfo: ipinfo)
 
                     } label: {

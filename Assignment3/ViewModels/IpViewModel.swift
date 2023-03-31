@@ -42,7 +42,7 @@ class IpViewModel : ObservableObject {
         guard let results = try? decoder.decode(IpModel.self, from: jsonData) else {
             return
         }
-        self.IpData[1] = results
+        self.IpData.append(results)
 
     }
     
