@@ -14,52 +14,64 @@ class IpViewModel : ObservableObject {
     @Published var error : IpModelError?
     private let url = "https://ipinfo.io/json?token=1004daec758201"
     
-        func fetchData() {
-            if let url = URL(string: self.url) {
+    // For testing
+    private let testJson =
+    """
+    {
+      "ip": "66.68.184.107",
+      "hostname": "cpe-66-68-184-107.austin.res.rr.com",
+      "city": "Cedar Park",
+      "region": "Texas",
+      "country": "US",
+      "loc": "30.5052,-97.8203",
+      "org": "AS11427 Charter Communications Inc",
+      "postal": "78613",
+      "timezone": "America/Chicago"
+    }
+    """//.data(using: .utf8)
     
-                URLSession
-                    .shared
-                    .dataTask(with: url) { (data, response, error) in
-                        if let error = error {
-                            print(error)
-                        } else {
-                            if let data = data {
-                                do {
-                                    let results = try JSONDecoder().decode(IpResults.self, from: data)
-                                    DispatchQueue.main.async {
-                                        self.IpData = results.data
-                                    }
+    init() {
+        self.fetchData()
+        print("Fetching the data")
+    }
     
-                                } catch {
-                                    print(error)
-                                }
-                            }
-                        }
-                    }.resume()
-            }
-    
+
+    func fetchData() {
+        let jsonData = testJson.data(using: .utf8)!
+        let decoder = JSONDecoder()
+        guard let results = try? decoder.decode(IpModel.self, from: jsonData) else {
+            return
         }
+        self.IpData[1] = results
+
+    }
     
-    
-    
-    
-    //@MainActor
-    //func fetchData() async {
-    //    if let url = URL(string: url) {
-    //        do {
-    //            let (data, _) = try await URLSession.shared.data(from: url)
-    //            guard let results = try JSONDecoder().decode(IpResults?.self, from: data) else {
-    //                self.hasError.toggle()
-    //                self.error = IpModelError.decodeError
-    //                return
-    //            }
-    //            self.IpData = results.data
-    //        } catch {
-    //            self.hasError.toggle()
-    //            self.error = IpModelError.customError(error: error)
-    //        }
-        //}
-    //}
+//    func fetchData() {
+//        if let url = URL(string: self.url) {
+//
+//            URLSession
+//                .shared
+//                .dataTask(with: url) { (data, response, error) in
+//                    if let error = error {
+//                        print(error)
+//                    } else {
+//                        if let data = data {
+//                            do {
+//                                let results = try JSONDecoder().decode(IpModel.self, from: data)
+//                                DispatchQueue.main.async {
+//                                    self.IpData = results
+//                                }
+//
+//                            } catch {
+//                                print(error)
+//                            }
+//                        }
+//                    }
+//                }.resume()
+//        }
+//
+//    }
+
     
     
     func findIndex(ips: IpModel) -> Int? {

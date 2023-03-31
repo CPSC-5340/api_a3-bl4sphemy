@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct IpResults : Codable {
         let total : String
@@ -15,6 +16,7 @@ struct IpResults : Codable {
 }
 
 struct IpModel : Codable, Identifiable {
+//struct IpModel : Codable {
     var id = UUID()
     let ip: String
     let hostname: String
