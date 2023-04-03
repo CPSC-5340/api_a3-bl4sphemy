@@ -15,20 +15,14 @@ struct IpView: View {
         NavigationView {
             List {
                 NavigationLink {
-                    
+                    IpDetail(ipinfo: ipvm.IpData!)
                 } label: {
                     Text(ipvm.IpData!.ip)
                 }
                 
-//                ForEach(ipvm.IpData) { data in
-//                    NavigationLink {
-//                        IpDetail(ipinfo: data)
-//
-//                    } label: {
-//                    }
-                }
-                
             }
+                
+        }
             .listStyle(.grouped)
             .navigationTitle("IP")
             .alert(isPresented: $ipvm.hasError, error: ipvm.error) {
