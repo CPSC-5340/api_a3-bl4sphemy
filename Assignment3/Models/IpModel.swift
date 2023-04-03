@@ -15,9 +15,9 @@ struct IpResults : Codable {
         let data : [IpModel]
 }
 
-struct IpModel : Codable, Identifiable {
-//struct IpModel : Codable {
-    var id = UUID()
+//struct IpModel : Codable, Identifiable {
+struct IpModel : Codable {
+    //var id = UUID()
     let ip: String
     let hostname: String
     let city: String

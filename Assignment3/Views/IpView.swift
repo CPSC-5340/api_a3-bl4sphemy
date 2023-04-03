@@ -12,18 +12,20 @@ struct IpView: View {
     @ObservedObject var ipvm = IpViewModel()
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             List {
- 
-                ForEach(ipvm.IpData) { ipinfo in
-                    NavigationLink {
-                        Text("argh")
-                        Text(ipvm.IpData[0].ip)
-                        IpDetail(ipinfo: ipinfo)
-
-                    } label: {
-                        Text(ipvm.IpData[0].ip)
-                    }
+                NavigationLink {
+                    
+                } label: {
+                    Text(ipvm.IpData!.ip)
+                }
+                
+//                ForEach(ipvm.IpData) { data in
+//                    NavigationLink {
+//                        IpDetail(ipinfo: data)
+//
+//                    } label: {
+//                    }
                 }
                 
             }
@@ -38,7 +40,7 @@ struct IpView: View {
         }
         
     }
-}
+//}
 
 
 struct IpView_Previews: PreviewProvider {
